@@ -36,7 +36,7 @@ if xcode-select -p > /dev/null 2>&1; then
 else
 	echo "[NOT BAD] Trying to install Xcode tools"
 	echo "[GOOD] Invoke popup window. Please select install Xcode"
-	xcode-select --install
+	xcode-select --install &
 fi 
 
 echo "[GOOD] Starting check and install the modules"
