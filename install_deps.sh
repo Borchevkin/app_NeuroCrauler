@@ -32,36 +32,55 @@ fi
 # Check presence of Xcode - it’s some tricky - for pymunk need clang. For install 
 # clang there is simple way - install Xcode
 if command -p xcode-select > /dev/null 2>&1; then
-	echo "[GOOD] xcode found on this computer"
-else
-	echo "[NOT BAD] Trying to install Xcode"
-	echo «[GOOD] Invoke popup window. Please select install Xcode»
+	echo "[NOT BAD] Trying to install Xcode tools"
+	echo "[GOOD] Invoke popup window. Please select install Xcode"
 	xcode-select --install
+else
+	echo "[GOOD] Xcode tools found on this computer"
 fi 
 
-echo «[GOOD] Starting install the libraries»
+echo "[GOOD] Starting install the libraries"
 
 # Go to home directory
 cd ~
 
-# Clone repo with pybrain and install it
-git clone https://github.com/pybrain/pybrain.git
-cd pybrain
-pip3 install . --user
-cd ~
-rm -r -f ~/pybrain
-
-# Deprecated because in pip3 pybran has legacy version
-#pip3 install pybrain
+if python3 -c "import pybrain" > /dev/null; then
+    echo "[GOOD] pybrain is already installed"
+else
+    echo "[INSTALL] Try to install pybrain"
+    # Clone repo with pybrain and install it
+    git clone https://github.com/pybrain/pybrain.git
+    cd pybrain
+    pip3 install . --user
+    cd ~
+    rm -r -f ~/pybrain
+    # Deprecated because in pip3 pybran has legacy version
+    #pip3 install pybrain
+fi
 
 # Install pyserial for controlling robot over serial port
-pip3 install pyserial
+if python3 -c "import serial" > /dev/null; then
+    echo "[GOOD] pyserial is already installed"
+else
+    echo "[INSTALL] Try to install pyserial"
+    pip3 install pyserial
+fi
 
 # Install pygame
-pip3 install pygame
+if python3 -c "import pygame" > /dev/null; then
+    echo "[GOOD] pygame is already installed"
+else
+    echo "[INSTALL] Try to install pyserial"
+    pip3 install pygame
+fi
 
 # Install pymunk. If xcode tools is installed there is no problems
-pip3 install pymunk
+if python3 -c "import pymunk" > /dev/null; then
+    echo "[GOOD] pygame is already installed"
+else
+    echo "[INSTALL] Try to install pymunk"
+    pip3 install pymunk
+fi
 
 # End installation
-echo "[I HOPE GOOD] End istallation. I hope that everything is ok"
+echo "[I HOPE GOOD] End installation. I hope that everything is ok"
