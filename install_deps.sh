@@ -31,15 +31,15 @@ fi
 
 # Check presence of Xcode - it’s some tricky - for pymunk need clang. For install 
 # clang there is simple way - install Xcode
-if command -p xcode-select > /dev/null 2>&1; then
+if xcode-select -p > /dev/null 2>&1; then
+    echo "[GOOD] Xcode tools found on this computer"
+else
 	echo "[NOT BAD] Trying to install Xcode tools"
 	echo "[GOOD] Invoke popup window. Please select install Xcode"
 	xcode-select --install
-else
-	echo "[GOOD] Xcode tools found on this computer"
 fi 
 
-echo "[GOOD] Starting install the libraries"
+echo "[GOOD] Starting check and install the modules"
 
 # Go to home directory
 cd ~
