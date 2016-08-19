@@ -9,6 +9,7 @@ import pymunk.pygame_util
 from pymunk.vec2d import Vec2d
 from pybrain.structure import FeedForwardNetwork
 from pybrain.structure import LinearLayer, SigmoidLayer, FullConnection
+import serial
 
 
 class NeuroCrawler(object):
