@@ -44,7 +44,7 @@ echo "[GOOD] Starting install the libraries"
 # Go to home directory
 cd ~
 
-if python3 -c "import pybrain" > /dev/null; then
+if python3 -c "import pybrain" > /dev/null 2>&1; then
     echo "[GOOD] pybrain is already installed"
 else
     echo "[INSTALL] Try to install pybrain"
@@ -59,7 +59,7 @@ else
 fi
 
 # Install pyserial for controlling robot over serial port
-if python3 -c "import serial" > /dev/null; then
+if python3 -c "import serial" > /dev/null 2>&1; then
     echo "[GOOD] pyserial is already installed"
 else
     echo "[INSTALL] Try to install pyserial"
@@ -67,7 +67,7 @@ else
 fi
 
 # Install pygame
-if python3 -c "import pygame" > /dev/null; then
+if python3 -c "import pygame" > /dev/null 2>&1; then
     echo "[GOOD] pygame is already installed"
 else
     echo "[INSTALL] Try to install pyserial"
@@ -75,7 +75,7 @@ else
 fi
 
 # Install pymunk. If xcode tools is installed there is no problems
-if python3 -c "import pymunk" > /dev/null; then
+if python3 -c "import pymunk" > /dev/null 2>&1; then
     echo "[GOOD] pygame is already installed"
 else
     echo "[INSTALL] Try to install pymunk"
